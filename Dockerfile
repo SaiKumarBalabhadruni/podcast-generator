@@ -10,8 +10,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install PyYAML using Python package manager
-RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install PyYAML
+RUN python3.10 -m pip install --upgrade pip && \
+    python3.10 -m pip install PyYAML || { echo "Failed to install PyYAML"; exit 1; }
 
 # Copy Python script and entrypoint script
 COPY feed.py /usr/bin/feed.py
